@@ -1,0 +1,91 @@
+07:45:42 PM: DEBUG [cursor_del_pool.py:12] Inicio del bloque with (cursor)
+07:47:03 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+07:48:23 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+07:56:18 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+07:56:18 PM: ERROR [conexion.py:29] Ocurrió un error al crear el pool: module 'psycopg2' has no attribute 'pool'
+08:11:36 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:11:36 PM: ERROR [conexion.py:29] Ocurrió un error al crear el pool: module 'psycopg2' has no attribute 'pool'
+08:15:18 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:15:18 PM: ERROR [conexion.py:30] Ocurrió un error al crear el pool: module 'psycopg2' has no attribute 'pool'
+08:18:20 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:18:20 PM: INFO [conexion.py:27] Se ha creado el pool de conexiones
+08:18:20 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:18:20 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:22:49 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:22:49 PM: INFO [conexion.py:27] Se ha creado el pool de conexiones
+08:22:49 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:22:49 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:24:35 PM: WARNING [menu_app_usuario.py:46] Opción no válida. Intente de nuevo.
+08:24:36 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:24:36 PM: INFO [conexion.py:27] Se ha creado el pool de conexiones
+08:24:36 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:24:36 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:24:38 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:24:38 PM: DEBUG [usuario_dao.py:28] Usuario insertado: ID Usuario: None, Username: , Password: 3
+08:24:38 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:24:38 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:24:38 PM: WARNING [menu_app_usuario.py:46] Opción no válida. Intente de nuevo.
+08:24:39 PM: WARNING [menu_app_usuario.py:46] Opción no válida. Intente de nuevo.
+08:24:39 PM: WARNING [menu_app_usuario.py:46] Opción no válida. Intente de nuevo.
+08:24:39 PM: WARNING [menu_app_usuario.py:46] Opción no válida. Intente de nuevo.
+08:24:39 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:24:39 PM: DEBUG [usuario_dao.py:28] Usuario insertado: ID Usuario: None, Username: 3, Password: 43
+08:24:39 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:24:39 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:31:22 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:31:23 PM: INFO [conexion.py:27] Se ha creado el pool de conexiones
+08:31:23 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:31:23 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:31:23 PM: INFO [menu_app_usuario.py:25] ID Usuario: 1, Username: , Password: 3
+08:31:23 PM: INFO [menu_app_usuario.py:25] ID Usuario: 2, Username: 3, Password: 43
+08:34:15 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:34:15 PM: DEBUG [usuario_dao.py:28] Usuario insertado: ID Usuario: None, Username: pibe, Password: 1234
+08:34:15 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:34:15 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:35:54 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:35:55 PM: INFO [conexion.py:27] Se ha creado el pool de conexiones
+08:35:55 PM: DEBUG [usuario_dao.py:44] Usuario eliminado: ID Usuario: 3, Username: None, Password: None
+08:35:55 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:35:55 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:37:07 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:37:07 PM: DEBUG [usuario_dao.py:36] Usuario actualizado: ID Usuario: 2, Username: juani, Password: 1234
+08:37:07 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:37:07 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:37:25 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:37:25 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:37:25 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:37:25 PM: INFO [menu_app_usuario.py:25] ID Usuario: 1, Username: , Password: 3
+08:37:25 PM: INFO [menu_app_usuario.py:25] ID Usuario: 2, Username: juani, Password: 1234
+08:37:29 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:37:29 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:37:29 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:37:29 PM: INFO [menu_app_usuario.py:25] ID Usuario: 1, Username: , Password: 3
+08:37:29 PM: INFO [menu_app_usuario.py:25] ID Usuario: 2, Username: juani, Password: 1234
+08:42:15 PM: ERROR [menu_app_usuario.py:45] Error de valor: invalid literal for int() with base 10: 'amongus'. Asegúrese de ingresar un número entero para el ID.
+08:42:32 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+08:42:33 PM: INFO [conexion.py:27] Se ha creado el pool de conexiones
+08:42:33 PM: DEBUG [usuario_dao.py:53] Usuario eliminado: ID Usuario: 2, Username: None, Password: None
+08:42:33 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+08:42:33 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+08:42:36 PM: INFO [menu_app_usuario.py:47] Saliendo de la aplicación...
+08:43:08 PM: WARNING [menu_app_usuario.py:50] Opción no válida. Intente de nuevo.
+08:43:12 PM: WARNING [menu_app_usuario.py:50] Opción no válida. Intente de nuevo.
+08:43:16 PM: WARNING [menu_app_usuario.py:50] Opción no válida. Intente de nuevo.
+09:15:39 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+09:15:39 PM: INFO [conexion.py:27] Se ha creado el pool de conexiones
+09:15:39 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+09:15:39 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+09:15:39 PM: INFO [menu_app_usuario.py:24] ID Usuario: 1, Username: , Password: 3
+09:16:05 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+09:16:05 PM: DEBUG [usuario_dao.py:29] Usuario insertado: ID Usuario: None, Username: juani, Password: 1234
+09:16:05 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+09:16:05 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+09:16:40 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+09:16:40 PM: DEBUG [usuario_dao.py:41] Usuario actualizado: ID Usuario: 1, Username: horacio, Password: 1234
+09:16:40 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+09:16:40 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+09:16:58 PM: DEBUG [cursor_del_pool.py:11] Inicio del bloque with (cursor)
+09:16:58 PM: DEBUG [usuario_dao.py:53] Usuario eliminado: ID Usuario: 1, Username: None, Password: None
+09:16:58 PM: DEBUG [cursor_del_pool.py:18] Se ejecuta el método __exit__
+09:16:58 PM: DEBUG [cursor_del_pool.py:24] Se realiza el commit
+09:17:08 PM: WARNING [menu_app_usuario.py:50] Opción no válida. Intente de nuevo.
