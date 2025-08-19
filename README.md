@@ -1,4 +1,5 @@
 # AltF4_CuartoSemestre
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/a6dc12ce-c9ea-4880-a2fd-0e79dce97a36" />
 
 📚 Repositorio de Proyectos y Clases de Último Semestre
 
@@ -23,3 +24,5 @@ Juan Ignacio Vera
 Mauro Ulloa
 
 Horacio Quiles
+
+Lucas Sosa
