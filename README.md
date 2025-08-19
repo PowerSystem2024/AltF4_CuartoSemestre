@@ -1,7 +1,7 @@
 # AltF4_CuartoSemestre
 <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/a6dc12ce-c9ea-4880-a2fd-0e79dce97a36" />
 
-📚 Repositorio de Proyectos y Clases de Último Semestre
+📚 REPOSITORIO DE PROYECTOS Y CLASES DE ÚLTIMO SEMESTRE
 
 ¡Bienvenidos a nuestro espacio de colaboración! Este es el repositorio oficial del grupo de estudiantes de la Licenciatura en Programación, cursando nuestro último semestre.
 
@@ -17,7 +17,7 @@ Documentar nuestro progreso a lo largo del semestre.
 
 Prepararnos para la vida profesional.
 
-👩‍💻 Miembros del Grupo
+👩‍💻 MIEMBROS DEL GRUPO
 
 Juan Ignacio Vera
 
