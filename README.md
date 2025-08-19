@@ -15,6 +15,9 @@ Documentar nuestro progreso a lo largo del semestre.
 Prepararnos para la vida profesional.
 
 👩‍💻 Miembros del Grupo
+
 Juan Ignacio Vera
+
 Mauro Ulloa
+
 Horacio Quiles
