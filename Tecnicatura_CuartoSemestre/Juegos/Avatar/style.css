@@ -1,0 +1,128 @@
+
+body {
+    background-color: #f0f8ff; 
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.titulo {
+    font-size: 3em;
+    color: #4b0082; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+section {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin: 20px 0;
+    width: 90%;
+    max-width: 600px;
+}
+
+h2 {
+    color: #007bff; 
+    font-size: 1.8em;
+    margin-top: 0;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+button {
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+#seleccionar-personaje {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#seleccionar-personaje label {
+    font-size: 1.2em;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+#seleccionar-personaje input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+#seleccionar-ataque p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#reiniciar button {
+    background-color: #dc3545; 
+}
+
+#reiniciar button:hover {
+    background-color: #c82333;
+}
+
+
+#reglas-del-juego {
+    text-align: left;
+}
+
+#reglas-del-juego h4 {
+    text-align: center;
+    font-size: 1.5em;
+    color: #6a0dad;
+}
+
+#reglas-del-juego li {
+    margin-bottom: 10px;
+}
+
+
+@media (max-width: 600px) {
+    .titulo {
+        font-size: 2em;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    section {
+        padding: 15px;
+    }
+}
