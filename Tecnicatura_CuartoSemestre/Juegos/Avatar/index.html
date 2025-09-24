@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>LA LEYENDA DE AANG: AVATAR</title>
         <link rel="stylesheet" href="./style.css">
      </head>
     <body>
-        <h1 class="titulo">AVATAR 🔥💧🌱🌪️</h1>
+        <div class="logo-container">
+            <img src="../assets/Avatar-the-Last-Airbender-Symbol.png" alt="Avatar Logo" class="logo">
+        </div>
         <section id="inicio">
             <button id="boton-reglas">Reglas del Juego</button>
         </section>
@@ -16,7 +19,7 @@
             <ol>
                 <li><strong>Selección de Personajes:</strong>
                     <ul>
-                        <li>El jugador elige uno de los cuatro personajes: Zuko, Katara, Aang, o Toph.</li>
+                        <li>El jugador elige uno de los seis personajes: Zuko, Katara, Aang, Toph, Sokka, o Azula.</li>
                         <li>El enemigo es asignado aleatoriamente de entre estos personajes.</li>
                     </ul>
                 </li>
@@ -64,17 +67,55 @@
         <section id="seleccionar-personaje">
             <h2>Elige tu Personaje</h2>
 
-            <label for="zuko">Zuko</label>
-            <input type="radio" name="personaje" id="zuko"/>
+            <div class="personajes-container">
+                <div class="personaje-option">
+                    <label for="zuko">
+                        <img src="../assets/zuko.png" alt="Zuko" class="personaje-imagen">
+                        <span>Zuko</span>
+                    </label>
+                    <input type="radio" name="personaje" id="zuko"/>
+                </div>
 
-            <label for="katara">Katara</label>
-            <input type="radio" name="personaje" id="katara"/>
+                <div class="personaje-option">
+                    <label for="katara">
+                        <img src="../assets/katara.png" alt="Katara" class="personaje-imagen">
+                        <span>Katara</span>
+                    </label>
+                    <input type="radio" name="personaje" id="katara"/>
+                </div>
 
-            <label for="aang">Aang</label>
-            <input type="radio" name="personaje" id="aang"/>
+                <div class="personaje-option">
+                    <label for="aang">
+                        <img src="../assets/aang.png" alt="Aang" class="personaje-imagen">
+                        <span>Aang</span>
+                    </label>
+                    <input type="radio" name="personaje" id="aang"/>
+                </div>
 
-            <label for="toph">Toph</label>
-            <input type="radio" name="personaje" id="toph"/>
+                <div class="personaje-option">
+                    <label for="toph">
+                        <img src="../assets/toph.png" alt="Toph" class="personaje-imagen">
+                        <span>Toph</span>
+                    </label>
+                    <input type="radio" name="personaje" id="toph"/>
+                </div>
+
+                <div class="personaje-option">
+                    <label for="sokka">
+                        <img src="../assets/sokka.png" alt="Sokka" class="personaje-imagen">
+                        <span>Sokka</span>
+                    </label>
+                    <input type="radio" name="personaje" id="sokka"/>
+                </div>
+
+                <div class="personaje-option">
+                    <label for="azula">
+                        <img src="../assets/azula.png" alt="Azula" class="personaje-imagen">
+                        <span>Azula</span>
+                    </label>
+                    <input type="radio" name="personaje" id="azula"/>
+                </div>
+            </div>
 
             <button id="boton-personaje">Seleccionar</button>
         </section>
