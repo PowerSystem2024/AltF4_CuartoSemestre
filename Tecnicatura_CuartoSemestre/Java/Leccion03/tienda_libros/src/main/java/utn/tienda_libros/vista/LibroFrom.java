@@ -2,6 +2,7 @@ package utn.tienda_libros.vista;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import utn.tienda_libros.modelo.Libro;
 import utn.tienda_libros.servicio.LibroServicio;
 
 import javax.swing.*;
@@ -13,6 +14,13 @@ public class LibroFrom extends JFrame {
     LibroServicio libroServicio;
     private JPanel panel;
     private JTable tablaLibros;
+    private JTextField libroTextoTextField;
+    private JTextField autorTextoTextField;
+    private JTextField precioTextoTextField;
+    private JTextField existenciasTextoTextField;
+    private JButton modificarButton;
+    private JButton agregarButton;
+    private JButton eliminarButton;
     private DefaultTableModel tablaModeloLibros;
 
 
@@ -22,6 +30,7 @@ public class LibroFrom extends JFrame {
         createUICompents();
 
         iniciarForma();
+        agregarButton.addActionListener(e -> agregarLibro());
     }
 
     private void iniciarForma() {
@@ -37,6 +46,42 @@ public class LibroFrom extends JFrame {
         int y = (tamanioPantalla.height - getHeight()/2);
         setLocation(x,y);
     }
+
+    private void agregarLibro(){
+        //Leer los valores del formulario
+        if (libroTextoTextField.getText().equals("")){
+            mostrarMensaje("Ingresa el nombre del libro");
+            libroTextoTextField.requestFocusInWindow();
+            return;
+        }
+        var nombreLibro = libroTextoTextField.getText();
+        var autor = autorTextoTextField.getText();
+        var precio = Double.parseDouble(precioTextoTextField.getText());
+        var existencias = Integer.parseInt(existenciasTextoTextField.getText());
+
+        //Creamos el ojbeto libro
+        var libro = new Libro(null, nombreLibro, autor, precio, existencias);
+        //libro.setNombreLibro(nombreLibro);
+        //libro.setAutor(autor);
+        //libro.setPrecio(precio);
+        //libro.setExistencias(existencias);
+        this.libroServicio.guardarLibro(libro);
+        mostrarMensaje("Se agrego el libro... ");
+        limpiarFormulario();
+        listarLibros();
+    }
+
+    private void  limpiarFormulario(){
+        libroTextoTextField.setText("");
+        autorTextoTextField.setText("");
+        precioTextoTextField.setText("");
+        existenciasTextoTextField.setText("");
+    }
+
+    private void mostrarMensaje(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+
 
     private void createUICompents(){
         this.tablaModeloLibros = new DefaultTableModel(0,5);
