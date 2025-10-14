@@ -1,6 +1,7 @@
 class Personaje {
-    constructor(nombre, vidas = 3) {
+    constructor(nombre, foto, vidas = 3) {
         this.nombre = nombre;
+        this.foto = foto;
         this.vidas = vidas;
         this.ataqueActual = null;
     }
@@ -48,19 +49,51 @@ class Juego {
     }
 
     inicializarPersonajes() {
-        return ['Zuko', 'Katara', 'Aang', 'Toph', 'Sokka', 'Azula'];
+        // Crear objetos Avatar como en el ejemplo de las imágenes
+        let zuko = new Personaje('Zuko', 'assets/zuko.png', 3);
+        let katara = new Personaje('Katara', 'assets/katara.png', 3);
+        let aang = new Personaje('Aang', 'assets/aang.png', 3);
+        let toph = new Personaje('Toph', 'assets/toph.png', 3);
+        let sokka = new Personaje('Sokka', 'assets/sokka.png', 3);
+        let azula = new Personaje('Azula', 'assets/azula.png', 3);
+        
+        let avatares = [];
+        avatares.push(zuko, katara, aang, toph, sokka, azula);
+        
+        return avatares;
     }
 
-    seleccionarPersonajeJugador(nombrePersonaje) {
-        this.jugador = new Personaje(nombrePersonaje);
+    generarPersonajesEnDOM() {
+        // Capturamos el elemento en el HTML como en el ejemplo de las imágenes
+        const contenedorTarjetas = document.getElementById('contenedorTarjetas');
+        let opcionAvatares = '';
+
+        // Recorremos el array de avatares con forEach como se muestra en las imágenes
+        // Este formato es el más utilizado en e-commerce para agregar elementos
+        // Con esto pasamos de tener una página estática a una página dinámica
+        this.personajes.forEach((avatar) => {
+            opcionAvatares = `
+                <div class="personaje-option">
+                    <input type="radio" name="personaje" id="${avatar.nombre.toLowerCase()}" />
+                    <label for="${avatar.nombre.toLowerCase()}">
+                        <img src="${avatar.foto}" alt="${avatar.nombre}" class="personaje-imagen">
+                        <span>${avatar.nombre}</span>
+                    </label>
+                </div>
+            `;
+            contenedorTarjetas.innerHTML += opcionAvatares;
+        });
+    }
+
+    seleccionarPersonajeJugador(personaje) {
+        this.jugador = personaje;
         this.seleccionarPersonajeEnemigo();
         this.interfaz.mostrarSeleccionAtaque();
     }
 
     seleccionarPersonajeEnemigo() {
         const indiceAleatorio = this.aleatorio(0, this.personajes.length - 1);
-        const nombreEnemigo = this.personajes[indiceAleatorio];
-        this.enemigo = new Personaje(nombreEnemigo);
+        this.enemigo = this.personajes[indiceAleatorio];
         this.interfaz.mostrarPersonajes(this.jugador.nombre, this.enemigo.nombre);
     }
 
@@ -116,18 +149,12 @@ class Juego {
 
 class Interfaz {
     constructor() {
+        // Solo capturamos elementos que ya existen en el HTML estático
         this.sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque');
         this.botonPersonajeJugador = document.getElementById('boton-personaje');
         this.sectionReiniciar = document.getElementById('reiniciar');
-        this.botonesAtaque = document.querySelectorAll('#seleccionar-ataque button');
         this.botonReiniciar = document.getElementById('boton-reiniciar');
         this.sectionSeleccionarPersonaje = document.getElementById('seleccionar-personaje');
-        this.inputZuko = document.getElementById('zuko');
-        this.inputKatara = document.getElementById('katara');
-        this.inputAang = document.getElementById('aang');
-        this.inputToph = document.getElementById('toph');
-        this.inputSokka = document.getElementById('sokka');
-        this.inputAzula = document.getElementById('azula');
         this.spanPersonajeJugador = document.getElementById('personaje-jugador');
         this.spanPersonajeEnemigo = document.getElementById('personaje-enemigo');
         this.spanVidasJugador = document.getElementById('vidas-jugador');
@@ -135,7 +162,15 @@ class Interfaz {
         this.sectionMensaje = document.getElementById('mensajes');
     }
 
+    // Método para capturar elementos después de generar HTML dinámico
+    inicializarElementosDinamicos() {
+        this.botonesAtaque = document.querySelectorAll('#seleccionar-ataque button');
+    }
+
     iniciar() {
+        // PRIMERO: Generar HTML dinámico de personajes (desde la clase Juego)
+        juego.generarPersonajesEnDOM();
+        
         this.sectionSeleccionarAtaque.style.display = 'none';
         this.botonPersonajeJugador.addEventListener('click', () => this.seleccionarPersonajeJugador());
         this.sectionReiniciar.style.display = "none";
@@ -145,6 +180,9 @@ class Interfaz {
 
         document.getElementById('boton-jugar').style.display = 'none';
         document.getElementById('seleccionar-personaje').style.display = 'block';
+
+        // DESPUÉS: Inicializar elementos dinámicos cuando el HTML ya existe
+        this.inicializarElementosDinamicos();
 
         this.botonesAtaque.forEach(boton => {
             boton.addEventListener('click', (event) => {
@@ -172,21 +210,21 @@ class Interfaz {
         document.getElementById("reglas-del-juego").style.display = "none";
         document.getElementById('boton-reglas').style.display = 'none';
 
+        // Buscar el personaje seleccionado dinámicamente
         let personajeSeleccionado = null;
+        const radioButtons = document.querySelectorAll('input[name="personaje"]');
+        
+        for (let radio of radioButtons) {
+            if (radio.checked) {
+                // Encontrar el objeto personaje correspondiente
+                personajeSeleccionado = juego.personajes.find(personaje => 
+                    personaje.nombre.toLowerCase() === radio.id
+                );
+                break;
+            }
+        }
 
-        if (this.inputZuko.checked) {
-            personajeSeleccionado = 'Zuko';
-        } else if (this.inputKatara.checked) {
-            personajeSeleccionado = 'Katara';
-        } else if (this.inputAang.checked) {
-            personajeSeleccionado = 'Aang';
-        } else if (this.inputToph.checked) {
-            personajeSeleccionado = 'Toph';
-        } else if (this.inputSokka.checked) {
-            personajeSeleccionado = 'Sokka';
-        } else if (this.inputAzula.checked) {
-            personajeSeleccionado = 'Azula';
-        } else {
+        if (!personajeSeleccionado) {
             this.mostrarError('Selecciona un personaje');
             return;
         }
@@ -227,15 +265,25 @@ class Interfaz {
     }
 
     crearMensajeFinal(resultado) {
+        // Mostrar la sección de reiniciar
         this.sectionReiniciar.style.display = "block";
 
+        // Agregar el mensaje final
         const parrafo = document.createElement('p');
         parrafo.innerHTML = resultado;
+        parrafo.style.fontSize = '1.3em';
+        parrafo.style.fontWeight = 'bold';
+        parrafo.style.textAlign = 'center';
+        parrafo.style.color = '#ff6b00';
+        parrafo.style.textShadow = '0 0 10px rgba(255, 100, 0, 0.8)';
         this.sectionMensaje.appendChild(parrafo);
 
-        this.botonesAtaque.forEach(boton => {
-            boton.disabled = true;
-        });
+        // Deshabilitar botones de ataque
+        if (this.botonesAtaque && this.botonesAtaque.length > 0) {
+            this.botonesAtaque.forEach(boton => {
+                boton.disabled = true;
+            });
+        }
     }
 
     reiniciar() {
