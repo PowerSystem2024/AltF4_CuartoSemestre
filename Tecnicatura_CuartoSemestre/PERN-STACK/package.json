@@ -2,7 +2,8 @@
   "name": "pern-stack",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/schemas/index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon .",
     "start": "node ."
@@ -11,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^4.21.2",
