@@ -14,4 +14,6 @@ public interface ILibroServicio {
 
     public void eliminarLibro(Libro libro);
 
+    public Libro buscarLibroPorNombreYAutor(String nombreLibro, String autor);
+
 }
