@@ -1,8 +1,10 @@
 
 import app from "./app.js";
 
-app.listen(3000);
+import {PORT} from "./config.js"
 
-console.log("Server on port", 3000);
+app.listen(PORT);
+
+console.log("Server on port", PORT);
 
 
