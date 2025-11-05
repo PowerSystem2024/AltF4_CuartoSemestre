@@ -8,10 +8,10 @@ function TareasPage() {
   useEffect(() => {
     listarTareas();
   }, []);
-  if (tareas.lengyh === 0) {
+  if (tareas.length === 0) {
     return(
       <div className=" flex justify-center items-center h-[calc(100vh-10rem)]">
-        <h1 className="text-2xl font-bold"No hay tareas></h1>
+        <h1 className="text-2xl font-bold">No hay tareas</h1>
       </div>
     )
   }

@@ -1,7 +1,7 @@
-import { createContext, useContext, useState, useEffect, use } from "react";
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useEffect } from "react";
 import Cookie from "js-cookie";
 import axios from "../api/axios.js";
-import { set } from "react-hook-form";
 
 export const AuthContext = createContext();
 
@@ -17,19 +17,17 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
     const [isAuth, setIsAuth] = useState(false);
     const [errors, setErrors] = useState([]);
-    const [loading, setLoading] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    // 🔹 LOGIN
     const signin = async (data) => {
         try {
-            const res = await axios.post("/signin", data,);
+            const res = await axios.post("/signin", data);
             console.log(res.data);
             setUser(res.data);
             setIsAuth(true);
             return res.data;
         } catch (error) {
-            console.error(error);
-            // 🔹 Manejo de errores
+            //console.error(error);
             if (Array.isArray(error.response.data)) {
                 return setErrors(error.response.data);
             }
@@ -37,7 +35,6 @@ export function AuthProvider({ children }) {
         }
     };
 
-    // 🔹 REGISTER
     const signup = async (data) => {
         try {
             const res = await axios.post("/signup", data,);
@@ -62,23 +59,24 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         setLoading(true);
         if (Cookie.get("token")) {
-            axios.get("/profile",
-            ).then((res) => {
+            axios.get("/profile").then((res) => {
                 setUser(res.data);
                 setIsAuth(true);
                 setLoading(false);
             }).catch((error) => {
                 setIsAuth(false);
                 setUser(null);
+                setLoading(false);
                 console.error(error);
             });
-        setLoading(false);    
+        } else {
+            setLoading(false);
         }
     }, []);
 
     useEffect(() => {
         const timeout = setTimeout(() =>{
-            setErrors(null);
+            setErrors([]);
         }, 4000);
         return () => {
             clearTimeout(timeout);
@@ -91,6 +89,7 @@ export function AuthProvider({ children }) {
                 isAuth,
                 errors,
                 signin,
+                setUser,
                 signup,
                 signout,
                 loading,

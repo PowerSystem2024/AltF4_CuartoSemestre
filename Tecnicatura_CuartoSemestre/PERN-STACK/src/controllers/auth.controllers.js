@@ -4,7 +4,7 @@ import { createAccessToken } from "../libs/jwt.js";
 import md5 from "md5";
 
 export const signin = async (req, res) => {
-  try {
+  
     const { email, password } = req.body;
 
     const result = await pool.query("SELECT * FROM usuarios WHERE email = $1", [email]);
@@ -17,20 +17,12 @@ export const signin = async (req, res) => {
 
     const token = await createAccessToken({ id: result.rows[0].id });
 
-    // 🔹 cookie lista para localhost
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: false,       // 🔸 false en desarrollo (sin HTTPS)
-      sameSite: "lax",     // 🔸 evita bloqueos entre 5173 y 3000
-      path: "/",           // 🔸 garantiza que se envíe en todas las rutas
+      secure: true,
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000, // 1 día
     });
-
     return res.json(result.rows[0]);
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ message: "Error en el servidor" });
-  }
 };
 
 export const signup = async (req, res, next) => {
@@ -47,10 +39,8 @@ export const signup = async (req, res, next) => {
     const token = await createAccessToken({ id: result.rows[0].id });
 
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "lax",
-      path: "/",
+      secure: true,
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     });
 

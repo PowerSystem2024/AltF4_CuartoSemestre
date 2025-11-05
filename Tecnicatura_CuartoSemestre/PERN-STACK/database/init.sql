@@ -5,7 +5,7 @@ CREATE TABLE tareas (
 );
 ALTER TABLE tareas ADD COLUMN usuario_Id INTEGER REFERENCES usuarios(id);
 
-ALTER TABLE tareas DROP CONSTRAINT tareas_tituto_key:
+ALTER TABLE tareas DROP CONSTRAINT tareas_titulo_key;
 
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,

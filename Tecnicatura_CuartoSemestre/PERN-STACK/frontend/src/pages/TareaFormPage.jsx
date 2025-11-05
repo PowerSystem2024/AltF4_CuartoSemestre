@@ -13,14 +13,12 @@ function TareaFormPage() {
   const { crearTarea, cargarTarea, editarTarea, error: tareasError } = useTareas()
   const onSubmit = handleSubmit(async (data) => {
 
-    const res = await crearTarea(data);
-    let tarea;
     if (!params.id) {
-      tarea = await crearTarea(data);
+      const tarea = await crearTarea(data);
       navigate("/tareas");
     } else {
-      tarea = await editarTarea(params.id, data);
-        navigate("/tareas");
+      const tarea = await editarTarea(params.id, data);
+      navigate("/tareas");
     }
   })
 
@@ -31,7 +29,7 @@ function TareaFormPage() {
         setValue("descripcion", tarea.descripcion);
       })
     }
-  })
+  }, [params.id, setValue, cargarTarea])
   return (
     <div className="flex h-[80vh] justify-center items-center">
       <Card>
@@ -43,10 +41,10 @@ function TareaFormPage() {
         <h2 className="text-3xl font-bold my-4">{params.id ? "Editar Tarea" : "Crear Tarea"}</h2>
         <form onSubmit={onSubmit}>
           <Label htmlFor="titulo">Titulo</Label>
-          <Input type="text" placeholder="Titulo" autoFocus{...register("titulo", { required: true })} />
+          <Input type="text" placeholder="Titulo" autoFocus {...register("titulo", { required: true })} />
           {errors.titulo && <p className="text-red-500">El titulo es obligatorio</p>}
           <Label htmlFor="descripcion">Descripcion</Label>
-          <TextArea type="text" placeholder="Descripcion" rows={3}{...register("descripcion")}></TextArea>
+          <TextArea type="text" placeholder="Descripcion" rows={3} {...register("descripcion")}></TextArea>
           <Button>{params.id ? "Aceptar" : "Guardar"}</Button>
         </form>
       </Card>

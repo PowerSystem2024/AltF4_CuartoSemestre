@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Button, Card, Conteiner, Input, Label } from "../components/ui";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useAuth } from '../context/AuthContext.jsx';
 
 function RegisterPage() {

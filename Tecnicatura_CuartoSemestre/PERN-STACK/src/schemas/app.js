@@ -29,8 +29,6 @@ app.get("/api/ping", async (req, res) =>{
 app.use('/api', tareasRoutes);
 app.use('/api', authRoutes);
 
-
-//Manejando errores
 app.use((err, req, res,next)=> {res.status(500).json({status: "error", message: err.message});});
 
 export default app;

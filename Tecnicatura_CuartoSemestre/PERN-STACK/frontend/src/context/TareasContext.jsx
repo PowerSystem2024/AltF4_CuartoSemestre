@@ -6,7 +6,7 @@ const TareasContext = createContext();
 export const useTareas = () => {
     const context = useContext(TareasContext)
     if (!context) {
-        throw new error("useTareas debe estar dentro del proveedor TareasProvider")
+        throw new Error("useTareas debe estar dentro del proveedor TareasProvider")
     }
     return context;
 }
@@ -24,7 +24,8 @@ export const TareasProvider = ({ children }) => {
     }
 
     const cargarTareas = async () =>{
-
+        const res = await listarTareasRequest();
+        setTareas(res.data);
     };
 
     const editarTarea = async (id, tarea) =>{
@@ -37,15 +38,15 @@ export const TareasProvider = ({ children }) => {
             }
            }
     }
-    const cargarTarea = async (id,tarea)=>{
-        const res = await listarTareaRequest(id,tarea);
+    const cargarTarea = async (id)=>{
+        const res = await listarTareaRequest(id);
         return res.data;
     }
 
 
     const crearTarea = async (tarea) => {
         try {
-            await crearTareaRequest(tarea);
+            const res = await crearTareaRequest(tarea);
             setTareas([...tareas, res.data]);
             return res.data;
 
@@ -62,7 +63,7 @@ export const TareasProvider = ({ children }) => {
     };
     return (
         <TareasContext.Provider value={{
-            tareas, listarTareas, eliminarTarea, crearTarea, cargarTarea, error, editarTarea,
+            tareas, listarTareas, eliminarTarea, crearTarea, cargarTarea, error, editarTarea, cargarTareas,
         }}>
             {children}
         </TareasContext.Provider>
