@@ -1,0 +1,101 @@
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useEffect } from "react";
+import Cookie from "js-cookie";
+import axios from "../api/axios.js";
+
+export const AuthContext = createContext();
+
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error("useAuth debe usarse dentro de un AuthProvider");
+    }
+    return context;
+};
+
+export function AuthProvider({ children }) {
+    const [user, setUser] = useState(null);
+    const [isAuth, setIsAuth] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const signin = async (data) => {
+        try {
+            const res = await axios.post("/signin", data);
+            console.log(res.data);
+            setUser(res.data);
+            setIsAuth(true);
+            return res.data;
+        } catch (error) {
+            //console.error(error);
+            if (Array.isArray(error.response.data)) {
+                return setErrors(error.response.data);
+            }
+            setErrors([error.response.data.message]);
+        }
+    };
+
+    const signup = async (data) => {
+        try {
+            const res = await axios.post("/signup", data,);
+            setUser(res.data);
+            setIsAuth(true);
+            return res.data;
+        } catch (error) {
+            if (Array.isArray(error.response.data)) {
+                return setErrors(error.response.data);
+            }
+            setErrors([error.response.data.message]);
+        }
+    };
+
+    const signout = async () => {
+        const res = await axios.post("/signout");
+        setUser(null);
+        setIsAuth(false);
+        return res.data;
+    }
+
+    useEffect(() => {
+        setLoading(true);
+        if (Cookie.get("token")) {
+            axios.get("/profile").then((res) => {
+                setUser(res.data);
+                setIsAuth(true);
+                setLoading(false);
+            }).catch((error) => {
+                setIsAuth(false);
+                setUser(null);
+                setLoading(false);
+                console.error(error);
+            });
+        } else {
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        const timeout = setTimeout(() =>{
+            setErrors([]);
+        }, 4000);
+        return () => {
+            clearTimeout(timeout);
+        };
+    },[errors]);
+    return (
+        <AuthContext.Provider
+            value={{
+                user,
+                isAuth,
+                errors,
+                signin,
+                setUser,
+                signup,
+                signout,
+                loading,
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
+}
